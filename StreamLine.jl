@@ -15,14 +15,14 @@ Function Documentation
     #                                      OR
     #       x,y,u,v should be 2d array ( for 2d streamline )
     #       x,y should be grided as "x,y=[[i for i in x,j in y,k in z],[j for i in x,j in y,k in z]]"
-    #   xi = initial x values as a row i.e. 1d row numpy array
-    #   yi = initial y values as a row i.e. 1d row numpy array
-    #   zi = initial z values as a row i.e. 1d row numpy array
+    #   xi = initial x values as a row i.e. 1d row array
+    #   yi = initial y values as a row i.e. 1d row array
+    #   zi = initial z values as a row i.e. 1d row array
     #   n = total number of lines = total number of points (excluding initial point)
     #   length = length of each line = distance between consecutive points
     #   r_mag(return magnitude) = whether to return magnitude of vectors or not       |   all these
-    #   r_u(return u) = whether to return i_cap(x component) of vectors or not          | are useful
-    #   r_v(return v) = whether to return j_cap(y component) of vectors or not          |  for
+    #   r_u(return u) = whether to return i_cap(x component) of vectors or not        |   are useful
+    #   r_v(return v) = whether to return j_cap(y component) of vectors or not        |   for
     #   r_w(return w) = whether to return k_cap(z component) of vectors or not        |   gradient plotting (i.e. useful to color the lines based on these values)
     #   returns in the following format:
     #       [xo,yo,zo,(mag),(i_cap),(j_cap),(k_cap)]
@@ -106,7 +106,7 @@ function StreamLine(;x,y,z=nothing,u,v,w=nothing,xi,yi,zi=nothing,n,length,r_mag
 
                 return ret
 
-        else
+        else    # 2d StreamLine
 
                 if z!=nothing && size(z[1,1,:])[1]==1 x=x[:,:,1]; y=y[:,:,1]; u=u[:,:,1]; v=v[:,:,1]; end
 
